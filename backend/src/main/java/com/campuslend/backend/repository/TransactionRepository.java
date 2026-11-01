@@ -18,6 +18,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
             SELECT t FROM Transaction t
             JOIN FETCH t.lender
             JOIN FETCH t.borrowRequest br
+            JOIN FETCH br.requester
             WHERE br.requester.id = :requesterId
               AND t.status = :status
             ORDER BY t.createdAt DESC
@@ -28,6 +29,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
     @Query("""
             SELECT t FROM Transaction t
             JOIN FETCH t.lender
+            JOIN FETCH t.borrowRequest br
+            JOIN FETCH br.requester
             WHERE t.borrowRequest.id = :requestId
             ORDER BY t.createdAt DESC
             """)
@@ -35,6 +38,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
 
     @Query("""
             SELECT t FROM Transaction t
+            JOIN FETCH t.lender
             JOIN FETCH t.borrowRequest br
             JOIN FETCH br.requester
             WHERE t.lender.id = :lenderId

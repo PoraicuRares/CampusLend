@@ -1,0 +1,23 @@
+[33mcommit b521a32d3bdc9cf11ecd75b93d1567fdc7b4533b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Poraicu Rares <r.poraicu@yahoo.com>
+Date:   Wed Oct 28 16:46:53 2026 +0200
+
+    feat: add borrow request DTOs with validation
+
+[33mcommit c6ef0563814d689c5fc17dbb2fe12ed46ba213c3[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Poraicu Rares <r.poraicu@yahoo.com>
+Date:   Wed Oct 28 16:17:35 2026 +0200
+
+    finalize repository layer
+
+[33mcommit 26961b89f1b9dd691b4adeea40a77f2738fc48fd[m
+Author: Poraicu Rares <r.poraicu@yahoo.com>
+Date:   Sat Oct 17 21:55:07 2026 +0300
+
+    feat: create User entity with validation constraints
+
+[33mcommit cd0f3a718f1effdcfcdf646b0a24a520aad6e6f0[m
+Author: Poraicu Rares <r.poraicu@yahoo.com>
+Date:   Tue Sep 29 18:05:02 2026 +0300
+
+    chore: initial spring boot setup

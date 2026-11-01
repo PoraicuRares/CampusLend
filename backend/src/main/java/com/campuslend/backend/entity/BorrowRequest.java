@@ -1,7 +1,7 @@
 package com.campuslend.backend.entity;
 
+import com.campuslend.backend.entity.enums.Campus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
