@@ -13,4 +13,4 @@ public record BorrowRequestResponse(
         boolean active,
         LocalDateTime createdAt,
         UserSummary requester
-) { }
+) {  }
