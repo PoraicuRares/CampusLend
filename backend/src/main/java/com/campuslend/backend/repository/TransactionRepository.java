@@ -50,7 +50,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
                                                         UUID lenderId,
                                                         TransactionStatus status);
 
-    @Modifying(clearAutomatically = true)
+    @Modifying(clearAutomatically = true , flushAutomatically = true)
     @Query("""
             UPDATE Transaction t
             SET t.status = :newStatus

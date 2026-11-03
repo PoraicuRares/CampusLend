@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User , UUID> {
     boolean existsByPhoneNumber(String phoneNumber);
 
 
-    @Modifying(clearAutomatically = true)
+    @Modifying(clearAutomatically = true , flushAutomatically = true)
     @Query("""
             UPDATE User u
             SET u.karmaScore = u.karmaScore + :points,
@@ -30,7 +30,7 @@ public interface UserRepository extends JpaRepository<User , UUID> {
     void rewardUserForCompletedLend(@Param("id") UUID id , @Param("points") double points);
 
 
-    @Modifying(clearAutomatically = true)
+    @Modifying(clearAutomatically = true , flushAutomatically = true)
     @Query("""
             UPDATE User u
             SET u.averageRating= (u.averageRating * u.ratingCount + :rating) /(u.ratingCount + 1),
@@ -39,7 +39,7 @@ public interface UserRepository extends JpaRepository<User , UUID> {
             """)
     void addRatingToAverage(@Param("id") UUID id , @Param("rating") double rating);
 
-    @Modifying(clearAutomatically = true)
+    @Modifying(clearAutomatically = true  , flushAutomatically = true)
     @Query("""
             UPDATE User u
             SET u.karmaScore = u.karmaScore * :factor
