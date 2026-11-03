@@ -46,7 +46,7 @@ public class Transaction {
     @Column(name = "created_at" , nullable = false , updatable = false)
     private LocalDateTime createdAt ;
 
-    @Column(name = "accepted_at" , nullable = false)
+    @Column(name = "accepted_at" )
     private LocalDateTime acceptedAt;
 
     @Column(name = "return_deadline")

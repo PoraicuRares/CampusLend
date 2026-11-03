@@ -1,5 +1,6 @@
 package com.campuslend.backend.entity;
 
+import com.campuslend.backend.entity.enums.Campus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,7 +36,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String campus;
+    private Campus campus;
 
     @Builder.Default
     @Column(name= "karma_score" , nullable = false)
