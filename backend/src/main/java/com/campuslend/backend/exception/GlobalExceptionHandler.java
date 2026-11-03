@@ -1,8 +1,8 @@
 package com.campuslend.backend.exception;
 
-import jakarta.persistence.OptimisticLockException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -43,10 +43,10 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
-    @ExceptionHandler(OptimisticLockException.class)
-    public ProblemDetail handleOptimisticLock(OptimisticLockException ex){
+    @ExceptionHandler(OptimisticLockingFailureException.class)
+    public ProblemDetail handleOptimisticLock(OptimisticLockingFailureException ex){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
-                HttpStatus.CONFLICT, "The resource was modified by someone else.Please refresh and try again");
+                HttpStatus.CONFLICT, "The resource was modified by someone else. Please refresh and try again");
         problemDetail.setTitle("Conflict");
         return problemDetail;
     }
@@ -62,7 +62,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleUnexpected(Exception ex){
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
-                HttpStatus.INTERNAL_SERVER_ERROR  ,  "An unexpected error occured");
+                HttpStatus.INTERNAL_SERVER_ERROR  ,  "An unexpected error occurred");
         problemDetail.setTitle("Internal server error");
         return problemDetail;
     }
