@@ -19,7 +19,7 @@ public interface UserMapper {
     @Mapping(target = "karmaScore" , ignore = true)
     @Mapping(target = "totalLends" , ignore = true)
     @Mapping(target = "averageRating" , ignore = true)
-    @Mapping(target = "password" , ignore = true)
+    @Mapping(target = "ratingCount" , ignore = true)
     @Mapping(target = "createdAt" , ignore = true)
     User toEntity(RegisterRequest request);
 }
