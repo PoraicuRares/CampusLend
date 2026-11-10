@@ -2,7 +2,6 @@ package com.campuslend.backend.mapper;
 
 import com.campuslend.backend.dto.request.CreateOfferRequest;
 import com.campuslend.backend.dto.response.TransactionResponse;
-import com.campuslend.backend.entity.BorrowRequest;
 import com.campuslend.backend.entity.Transaction;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

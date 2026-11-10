@@ -69,7 +69,7 @@ A transaction moves through these statuses: `PENDING`, `ACCEPTED`, `REJECTED`, `
 - **Optimistic locking:** `@Version` on requests and transactions prevents two users from overwriting each other's changes, for example when two offers are accepted at the same time.
 - **Indexes** on the columns used to filter the feed (`campus`, `active`, `requester_id`).
 - **Validated request DTOs** (Java records with Bean Validation) and **MapStruct** mappers keep entities out of the API layer.
-- **Centralized error handling:** a global exception handler returns RFC 7807 `ProblemDetail` responses, including per-field validation errors.
+- **Centralized error handling:** a global exception handler returns RFC 9457 `ProblemDetail` responses, including per-field validation errors.
 - **`open-in-view` disabled**, so all data loading happens explicitly in the service layer.
 - **No secrets in the code:** database credentials come from environment variables.
 
