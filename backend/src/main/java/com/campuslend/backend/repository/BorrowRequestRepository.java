@@ -36,7 +36,8 @@ public interface BorrowRequestRepository extends JpaRepository<BorrowRequest , U
 
     @Query("""
             SELECT br FROM BorrowRequest br
-            WHERE br.requester.id = :requesterid
+            JOIN FETCH br.requester
+            WHERE br.requester.id = :requesterId
             ORDER BY br.createdAt DESC
             """)
     List<BorrowRequest> findMyRequests(@Param("requesterId") UUID requesterId);
