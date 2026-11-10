@@ -18,6 +18,6 @@ public record TransactionResponse(
         LocalDateTime completedAt,
         Integer rating,
         UserSummary lender,
-        BorrowRequest borrowRequest,
+        BorrowRequestSummary borrowRequest,
         String contactPhone
 ) { }
