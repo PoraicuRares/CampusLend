@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -41,4 +42,12 @@ public interface BorrowRequestRepository extends JpaRepository<BorrowRequest , U
             ORDER BY br.createdAt DESC
             """)
     List<BorrowRequest> findMyRequests(@Param("requesterId") UUID requesterId);
+
+    @Query("""
+        SELECT br FROM BorrowRequest br
+        JOIN FETCH br.requester
+        WHERE br.id = :id
+        """)
+    Optional<BorrowRequest> findByIdWithRequester(@Param("id")UUID id);
+
 }
