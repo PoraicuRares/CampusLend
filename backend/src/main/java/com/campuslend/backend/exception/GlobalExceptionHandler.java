@@ -45,6 +45,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(OptimisticLockingFailureException.class)
     public ProblemDetail handleOptimisticLock(OptimisticLockingFailureException ex){
+        log.warn("Optimistic locking conflict : {}" , ex.getMessage());
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.CONFLICT, "The resource was modified by someone else. Please refresh and try again");
         problemDetail.setTitle("Conflict");
@@ -53,6 +54,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ProblemDetail handleDataIntegrity(DataIntegrityViolationException ex){
+        log.warn("Data integrity violation : {}" , ex.getMostSpecificCause().getMessage());
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.CONFLICT , "The request conflicts with existing data");
         problemDetail.setTitle("Conflict");
@@ -61,6 +63,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleUnexpected(Exception ex){
+        log.error("Unexpected error", ex);
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.INTERNAL_SERVER_ERROR  ,  "An unexpected error occurred");
         problemDetail.setTitle("Internal server error");
