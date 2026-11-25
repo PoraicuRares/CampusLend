@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -70,4 +71,13 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
             """)
     List<Transaction> findOverdue(@Param("status") TransactionStatus status,
                                   @Param("now") LocalDateTime now);
+
+    @Query("""
+            SELECT t FROM Transaction t
+            JOIN FETCH t.lender
+            JOIN FETCH t.borrowRequest br
+            JOIN FETCH br.requester
+            WHERE t.id = :id
+            """)
+    Optional<Transaction> findByIdWithDetails(@Param("id") UUID transactionId);
 }
